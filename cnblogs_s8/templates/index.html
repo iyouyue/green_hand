@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/bs/js/bootstrap.js"></script>
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            {% if request.user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ request.user.username }}</a></li>
+                    <li><a href="/logout/">注销</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">修改密码</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login/">登录</a></li>
+                    <li><a href="/register/">注册</a></li>
+                </ul>
+            {% endif %}
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- 左侧菜单 -->
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
+            </div>
+             <div class="panel panel-success">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
+            </div>
+             <div class="panel panel-danger">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
+                <div class="panel-body">
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+         <!-- 文章列表 -->
+        <div class="col-md-6">
+            <div class="article_list">
+                {% for article_obj in article_list %}
+                    <div class="article_item">
+                          <h4><a href="/blog/{{ article_obj.user.username }}/articles/{{ article_obj.pk }}.html">{{ article_obj.title }}</a></h4>
+                          <div class="row">
+                              <div class="col-md-2"><a href="/blog/{{ article_obj.user.username }}"><img src="{{ article_obj.user.avatar.url }}" alt="" width="50" height="50"></a></div>
+                              <div class="desc">
+                                  <p>{{ article_obj.desc }}</p>
+                              </div>
+                          </div>
+                          <div class="small">
+                               <a href="/blog/{{ article_obj.user.username }}">{{ article_obj.user.username }}</a>
+                               <span>发布于</span>
+                               <span>{{ article_obj.create_time|date:'Y-m-d H:i' }}</span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-comment"></span>评论({{ article_obj.comment_count }})&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-thumbs-up"></span>点赞({{ article_obj.up_count }})
+                          </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+          <!-- 广告 -->
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

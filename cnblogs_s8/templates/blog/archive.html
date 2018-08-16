@@ -1,0 +1,35 @@
+ <div class="left_region">
+    <div class="panel panel-info">
+        <!-- Default panel contents -->
+        <div class="panel-heading">我的分类</div>
+        <div class="panel-body">
+            <p>
+                {% for category in cate_list %}
+                    <p><a href="/blog/{{ username }}/cate/{{ category.0 }}">{{ category.0 }}({{ category.1 }})</a></p>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading">标签</div>
+        <div class="panel-body">
+            <p>
+                {% for tag in tag_list %}
+                    <p><a href="/blog/{{ username }}/tag/{{ tag.0 }}">{{ tag.0 }}({{ tag.1 }})</a></p>
+                {% endfor %}
+
+            </p>
+        </div>
+    </div>
+    <div class="panel panel-danger">
+        <!-- Default panel contents -->
+        <div class="panel-heading">日期归档</div>
+        <div class="panel-body">
+            {% for date in date_ist %}
+                <p><a href="/blog/{{ username }}/date/{{ date.0 }}">{{ date.0 }}({{ date.1 }})</a></p>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

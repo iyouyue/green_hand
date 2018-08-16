@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+     <script src="/static/jquery-2.1.1.js"></script>
+     <script src="/static/highcharts.js"></script>
+</head>
+
+
+<body>
+
+<h3>查看成绩</h3>
+<div class="container">
+    <div class="row">
+     <table class="table table-bordered table-striped">
+         {% for cls in class_list %}
+         <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ cls.course }}({{ cls.semester }})</td>
+            <td><a class="chart" cid="{{ cls.pk }}" sid="{{ obj.pk }}">成绩柱状图</a></td>
+         </tr>
+         {% endfor %}
+
+     </table>
+
+    </div>
+</div>
+<div id="container" style="width: 600px"></div>
+
+<script>
+    $(".chart").click(function () {
+         var sid=$(this).attr("sid");
+         var cid=$(this).attr("cid");
+
+         $.ajax({
+             url:"",
+             data:{"sid":sid,"cid":cid},
+             success:function (data) {
+
+                 console.log(data);
+                 console.log(typeof data);
+
+                  param={
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: '成绩柱状图'
+                                },
+                                subtitle: {
+                                    text: '数据截止 2017-03，来源: <a href="https://en.wikipedia.org/wiki/List_of_cities_proper_by_population">Wikipedia</a>'
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    labels: {
+                                        rotation: -30,
+                                        style: {
+                                            fontSize: '13px',
+                                            fontFamily: 'Verdana, sans-serif'
+                                        }
+                                    }
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: '分数 '
+                                    }
+                                },
+                                legend: {
+                                    enabled: false
+                                },
+                                tooltip: {
+                                    pointFormat: '分数: <b>{point.y:.2f} 百万</b>'
+                                },
+                                series: [{
+                                    name: '总人口',
+                                    data: [
+                                    ],
+                                    dataLabels: {
+                                        enabled: true,
+                                        rotation: 0,
+                                        color: 'red',
+                                        align: 'right',
+                                        format: '{point.y:.1f}', // one decimal
+                                        y: 10, // 10 pixels down from the top
+                                        style: {
+                                            fontSize: '13px',
+                                            fontFamily: 'Verdana, sans-serif'
+                                        }
+                                    }
+                                }]
+                            } ;
+                  param.series[0].data=data;
+                  $('#container').highcharts(param);
+
+             }
+         })
+
+
+
+    })
+</script>
+
+
+
+</body>
+</html>

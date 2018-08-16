@@ -1,0 +1,97 @@
+{% load my_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/article_detail.css">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/bs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/theme/{{ username }}.css">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header p.title {
+            color: #ffffff;
+            font-family: 微软雅黑, 华文细黑, 黑体, Arial;
+            font-size: 24px;
+            float: left;
+            margin-left: 15px;
+        }
+
+        .action {
+            float: right;
+            margin-right: 40px;
+        }
+
+        .action a {
+            padding: 5px 8px;
+            color: white;
+            background-color: #5ab2ce;
+            font-size: 12px;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <p class="title">{{ username }}</p>
+    <div class="action">
+        <a href="/blog/{{ request.user.username }}/backend">管理</a>
+        <a href="">首页</a>
+        <a href="">文章</a>
+        <a href="">随笔</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {% get_archive_style username %}
+        </div>
+        <div class="col-md-8">
+
+            {% block content %}
+               <div class="articles_region">
+                <div class="article_list">
+                    {% for article_obj in article_list %}
+                        <div class="article_item">
+                            <h5><a href="/blog/{{ username }}/articles/{{ article_obj.pk }}.html">{{ article_obj.title }}</a></h5>
+                            <div class="row">
+                                <div class="desc">
+                                    <p>{{ article_obj.desc }}</p>
+                                </div>
+                            </div>
+                            <div class="small pull-right">
+                                <a href="">{{ article_obj.user.username }}</a>
+                                <span>发布于</span>
+                                <span>{{ article_obj.create_time|date:'Y-m-d H:i' }}</span>&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-comment"></span>评论({{ article_obj.comment_count }})&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-thumbs-up"></span>点赞({{ article_obj.up_count }})
+                            </div>
+                            <hr>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

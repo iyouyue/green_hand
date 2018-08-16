@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+                <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group" style="position: relative">
+                    <label for="">{{ field.label }}</label>
+                    <div class="input_style">
+                        {{ field }}
+                        <span class="error pull-right">{{ field.errors.0 }}</span>
+                    </div>
+                    {% if field.is_pop %}
+                        <a onclick="pop('{{ field.url }}')" style="position: absolute;top: 24px;right: -23px" class="pop_btn"><span class="pull-right" style="font-size: 22px;">+</span></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="form-group">
+                    <p><input type="submit" class="btn btn-default" ></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function pop(url) {
+        window.open(url,"","width=500,height=400,top=200,left=500")
+    }
+</script>

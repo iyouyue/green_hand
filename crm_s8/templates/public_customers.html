@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+<h3>公共客户列表</h3>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>最后跟进日期</th>
+                <th>当前课程顾问</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for customer in customer_list %}
+              <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ customer.name }}</td>
+                  <td>{{ customer.get_gender_display}}</td>
+                  <td>{{ customer.last_consult_date|date:"Y-m-d"}}</td>
+                  <td>{{ customer.consultant}}</td>
+                  <td><a href="/stark/app01/customer/further_follow/{{ customer.pk }}">确认跟进</a></td>
+              </tr>
+
+             {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+</body>
+</html>

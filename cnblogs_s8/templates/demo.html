@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js "></script>
+
+</head>
+<body>
+yuan
+<p>111</p>
+<p>222</p>
+<p>333</p>
+<select name="" id="s1">
+    <option value="1">111</option>
+    <option value="2">222</option>
+    <option value="3">333</option>
+</select>
+ <script>
+          s="helloeee";
+          alert(s.indexOf("e"));
+          alert(s.slice(2));
+
+           $("#s1").change(function () {
+               alert($("#s1").val())
+           });
+
+           // 方式1
+           var arr=[111,222,333];
+           $.each(arr,function (i,j) {
+               console.log(i,j)
+           });
+
+            var d={"name":"alex","age":'33'};
+
+            $.each(d,function (i,j) {
+                console.log(i,j)
+            });
+
+            // 方式2
+            $("p").each(function () {
+                console.log($(this).html())
+            })
+
+    </script>
+</body>
+</html>

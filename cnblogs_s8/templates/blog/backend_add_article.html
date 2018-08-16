@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+     <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/backend_index.css">
+</head>
+<body>
+<h4>文章添加</h4>
+<div class="container">
+
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+          <form action="" method="post">
+              <div class="title">
+                  <label for="">标题：</label>
+                 <p> <input type="text" name="title"></p>
+              </div>
+               <div class="con">
+                   <label for="">内容：(kindEditor编辑器，支持拖放/粘贴上传图片) )</label>
+                   <p><textarea name="content" id="article_area" cols="60" rows="10"></textarea></p>
+              </div>
+              {% csrf_token %}
+              <p><input type="submit" class="btn btn-default"></p>
+          </form>
+
+    </div>
+</div>
+
+
+<script src="/static/kindeditor/kindeditor-all.js"></script>
+<script>
+
+       KindEditor.ready(function(K) {
+                window.editor = K.create('#article_area',{
+                    width:800,
+                    height:800,
+                    items:[
+                                'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                                'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                                'anchor', 'link', 'unlink', '|', 'about'
+                        ],
+
+                    uploadJson:"/upload_file/",
+                    extraFileUploadParams:{"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val()},
+                    filePostName:"upload_img"
+
+
+                });
+        });
+
+</script>
+</body>
+</html>

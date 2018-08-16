@@ -1,0 +1,102 @@
+{% load rbac_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+    <script src="/static/jquery-2.1.1.js"></script>
+    {% block css %}
+
+    {% endblock css %}
+    <style>
+        .header {
+            width: 100%;
+            height: 50px;
+            background-color: #336699;
+        }
+
+        .menu, .content {
+            float: left;
+        }
+
+        .menu {
+
+            position: fixed;
+            top:50px;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            background-color: darkgray;
+        }
+
+        .content{
+            position:fixed;
+            top:50px;
+            left: 200px;
+            right: 0;
+            bottom: 0;
+            overflow: scroll;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .menu .title {
+            font-size: 16px;
+            color: #336699 !important;
+            margin: 20px 0;
+        }
+
+        .con a {
+            margin-left: 30px;
+            color: white;
+        }
+
+        .active {
+            color: red !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+
+</div>
+
+
+<div class="box">
+
+        <div class="menu">
+            {% get_menu request %}
+        </div>
+
+        <div class="content">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+</div>
+
+{% block js %}
+
+
+
+{% endblock js %}
+ <script>
+
+       $(".menu_list .title").click(function () {
+           if ($(this).next().hasClass("hide")){
+               $(this).next().removeClass("hide");
+           }else{
+               $(this).next().addClass("hide");
+           }
+       })
+
+    </script>
+
+</body>
+</html>

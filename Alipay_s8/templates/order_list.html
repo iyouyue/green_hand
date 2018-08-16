@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+    <h1>订单列表</h1>
+    <ul>
+        {% for item in order_list %}
+            <li>{{ item.num }}  状态：{{ item.status }} 状态文字：{{ item.get_status_display }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

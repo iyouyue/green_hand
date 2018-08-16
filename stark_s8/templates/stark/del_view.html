@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bs/css/bootstrap.css">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <p>{{ del_obj }}</p>
+</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit"  class="btn btn-danger" value="确认删除吗？">
+    <a href="{{ list_url }}" class="btn btn-info">取消</a>
+</form>
+
+
+</body>
+</html>

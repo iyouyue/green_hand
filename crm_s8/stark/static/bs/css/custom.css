@@ -1,0 +1,131 @@
+body {
+    padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link {
+	color: black;
+	}
+
+
+/*Yuan personal*/
+
+#base_name {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.left_con{
+	border-right: solid 1px black;
+	width: 15%;
+}
+
+.right_con{
+	background-color: white;
+	width: 85%;
+}
+
+.right_con,.left_con{
+	min-height: 500px;
+	height: auto;
+	overflow: hidden;
+	float: left;
+
+}
+
+.operate{
+	margin-top: 20px;
+	list-style: none;
+	color: white;
+}
+
+.handle{
+
+	line-height: 30px;
+	background-color: #2b669a;
+	text-align: center;
+}
+
+.left_con ul{
+	padding: 0;
+}
+
+.operate li{
+	padding-left: 15px;
+	padding-top: 15px;
+	font-size: 12px;
+}
+
+.table{
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+.btn{
+	font-size: 13px;
+}
+
+
+
+
+/*addBook	*/
+
+
+#Form{
+	margin-top: 40px;
+	margin-left: 30px;
+	color: #122b40;
+
+}
+
+.addBookTitle{
+	text-align: center;
+	color: black;
+}
+
+#pager .active{
+	background-color: rebeccapurple;
+}
+
+#pager{
+	position: absolute;
+	top: 420px;
+}
+
+#search{
+	margin-top: 30px;
+}
+
+
+#search_fail{
+	color: red;
+	text-align: center;
+}
+
+
+
+
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+
+#logo{
+	color: white;
+	font-size: 20px;
+	margin-right: 100px;
+}
+
+
+
+
+
+

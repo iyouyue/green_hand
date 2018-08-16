@@ -1,0 +1,25 @@
+
+    <div class="menu_list">
+        {% for item in menu_dict.values %}
+            <div class="item">
+                <div class="title"><a href="">{{ item.title }}</a></div>
+                {% if item.active %}
+                     <div class="con">
+                {% else %}
+                     <div class="con hide">
+                {% endif %}
+                    {% for son in item.children %}
+                        {% if son.active %}
+                            <p><a href="{{ son.url }}" class="active">{{ son.title }}</a></p>
+                        {% else %}
+                            <p><a href="{{ son.url }}">{{ son.title }}</a></p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+

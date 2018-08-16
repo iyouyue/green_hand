@@ -1,0 +1,70 @@
+{% load rbac_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .header {
+            width: 100%;
+            height: 50px;
+            background-color: #336699;
+        }
+
+        .menu, .content {
+            float: left;
+        }
+
+        .menu {
+
+            height: 600px;
+            background-color: darkgray;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .menu .title {
+            font-size: 16px;
+            color: #336699 !important;
+            margin: 20px 0;
+        }
+
+        .con a {
+            margin-left: 30px;
+            color: white;
+        }
+
+        .active {
+            color: red !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+
+</div>
+
+<div class="box">
+
+    <div class="row">
+    <div class="menu col-md-2">
+          {% get_menu request %}
+    </div>
+
+    <div class="content col-md-9">
+        {% block con %}
+
+        {% endblock %}
+    </div>
+    </div>
+</div>
+
+
+</body>
+</html>
